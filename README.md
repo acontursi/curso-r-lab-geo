@@ -87,7 +87,7 @@ Taller práctico con un dataset ambiental propio del laboratorio, usado como hil
 
 ## 7. Materiales y recursos
 
-- Dataset ambiental de ejemplo, único para ambas sesiones — **pendiente de definir** (ver `data/README.md`).
+- Dataset ambiental de ejemplo, único para ambas sesiones: registros climáticos mensuales sintéticos de 6 localidades de Santa Fe (ver [`data/README.md`](data/README.md)).
 - Script de referencia sobre datos raster (`terra`), para exploración posterior a la cursada.
 - Plantilla RMarkdown base, con YAML y estructura de secciones ya definida.
 - Guía de instalación previa (ver más abajo), a distribuir antes de la Sesión 1.
