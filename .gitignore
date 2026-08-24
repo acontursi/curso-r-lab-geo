@@ -29,3 +29,11 @@
 # OS files
 .DS_Store
 Thumbs.db
+
+# Outputs generados por los scripts del curso (cada participante los genera
+# localmente al correr los bloques; no se versionan)
+sesion-1-datos-estadistica-graficos/*.png
+sesion-1-datos-estadistica-graficos/*.csv
+sesion-2-espacial-rmarkdown/*.png
+sesion-2-espacial-rmarkdown/paper_final.pdf
+sesion-2-espacial-rmarkdown/paper_final.html

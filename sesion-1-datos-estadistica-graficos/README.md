@@ -15,11 +15,11 @@
 Ejecutar en orden, dentro de un mismo proyecto de RStudio (`.Rproj` creado en el Bloque 1). Cada script está comentado y pensado para correrse línea por línea, no de una sola vez.
 
 - [x] `01_entorno_y_proyecto.R`
-- [ ] `02_tidyverse_basico.R`
-- [ ] `03_estadistica_descriptiva.R`
-- [ ] `04_graficos_ggplot2.R`
+- [x] `02_tidyverse_basico.R`
+- [x] `03_estadistica_descriptiva.R`
+- [x] `04_graficos_ggplot2.R`
 
-*(Scripts en construcción — se agregan paso a paso en este repositorio.)*
+Los cuatro scripts de la Sesión 1 están probados y corren de punta a punta desde la raíz del proyecto (`Rscript sesion-1-datos-estadistica-graficos/0X_....R`).
 
 ## Dataset
 
