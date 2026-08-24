@@ -108,3 +108,11 @@ ggsave("sesion-2-espacial-rmarkdown/mapa_raster_vector.png",
 # El paquete `geodata` (install.packages("geodata")) permite descargar varios
 # de estos productos directamente desde R, por ejemplo:
 #   geodata::worldclim_country("Argentina", var = "tavg", res = 10, path = tempdir())
+
+
+
+
+#install.packages("tinytex")
+#tinytex::install_tinytex()
+
+#install.packages(c("systemfonts", "textshaping", "ragg", "kableExtra"))

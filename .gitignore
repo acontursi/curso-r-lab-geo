@@ -21,6 +21,7 @@
 # Compiled outputs
 *.html
 *.pdf
+!docs/*.html
 !docs/*.pdf
 
 # R Environment Variables

@@ -1,0 +1,33 @@
+slides > slide {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+h2 {
+  color: #1F3864;
+  font-weight: 700;
+}
+
+h1.title {
+  color: #1F3864;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+th {
+  background-color: #1F3864;
+  color: white;
+}
+
+code {
+  color: #B03A2E;
+}
+
+blockquote {
+  border-left: 4px solid #1F3864;
+  padding-left: 12px;
+  color: #444;
+  font-style: italic;
+}

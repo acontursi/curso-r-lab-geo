@@ -1,0 +1,209 @@
+---
+title: "Instalación de R y RStudio"
+subtitle: "R base vs. librerías — la lógica del ecosistema"
+author: "Laboratorio de Geografía Física y Ambiental"
+date: "`r local({meses <- c('enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'); paste0(format(Sys.Date(), '%d'), ' de ', meses[as.numeric(format(Sys.Date(), '%m'))], ' de ', format(Sys.Date(), '%Y'))})`"
+output:
+  slidy_presentation:
+    font_adjustment: 0
+    self_contained: true
+    css: estilos.css
+    highlight: pygments
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+## De qué se trata esta charla
+
+Antes de escribir una sola línea de código, necesitamos dos cosas instaladas y entender **una distinción conceptual** que va a acompañar todo el curso:
+
+1. **R** — el motor: el lenguaje y su instalación base
+2. **RStudio** — la carrocería: el entorno donde vamos a trabajar cómodamente
+3. **R base vs. librerías** — por qué instalamos R una vez, pero paquetes todo el tiempo
+
+<!--
+Nota para quien dicta la charla: R es como el motor de un auto; RStudio es el
+tablero, el volante, los espejos — hace mucho más agradable manejar el mismo motor.
+-->
+
+
+# Parte 1 — Instalar R
+
+## ¿Qué es R, exactamente?
+
+- Es un **lenguaje de programación** y, a la vez, el **programa** que lo interpreta y ejecuta.
+- Se instala **una sola vez** por computadora (después se actualiza cada tanto, no todos los días).
+- Es gratuito y de código abierto — se descarga de **CRAN** (Comprehensive R Archive Network), el repositorio oficial.
+- Sin R instalado, **RStudio no funciona**: RStudio no es R, es una interfaz que lo necesita por detrás.
+
+## Instalar R — Windows
+
+1. Ir a **[cran.r-project.org](https://cran.r-project.org)**
+2. Click en **"Download R for Windows"**
+3. Click en **"base"**
+4. Descargar el instalador (ej. `R-4.x.x-win.exe`) y ejecutarlo
+5. Aceptar las opciones por defecto durante toda la instalación (no hace falta tocar nada)
+
+> No hace falta abrir R después de instalarlo — vamos a trabajar siempre desde RStudio.
+
+## Instalar R — macOS
+
+1. Ir a **[cran.r-project.org](https://cran.r-project.org)**
+2. Click en **"Download R for macOS"**
+3. Elegir el instalador `.pkg` correspondiente al chip de la Mac:
+   - **Apple Silicon (M1/M2/M3/M4):** `R-4.x.x-arm64.pkg`
+   - **Intel:** `R-4.x.x-x86_64.pkg`
+4. Abrir el `.pkg` descargado y seguir el instalador (opciones por defecto)
+
+> Si no saben qué chip tiene su Mac:  → **Acerca de esta Mac**, en el menú Apple.
+
+## Instalar R — Linux (Ubuntu/Debian)
+
+Desde la terminal:
+
+```bash
+sudo apt update
+sudo apt install --no-install-recommends r-base
+```
+
+En distribuciones más nuevas puede ser necesario agregar el repositorio oficial de CRAN para tener la versión más reciente de R (las versiones de los repositorios del sistema operativo suelen quedar desactualizadas). Ver instrucciones específicas por distribución en:
+**[cran.r-project.org/bin/linux](https://cran.r-project.org/bin/linux/)**
+
+## Verificar que R quedó instalado
+
+Abrir una terminal (o el símbolo del sistema en Windows) y escribir:
+
+```bash
+R --version
+```
+
+Debería aparecer algo como:
+
+```
+R version 4.x.x (20XX-XX-XX)
+```
+
+Si aparece un error de "comando no encontrado", la instalación no terminó de completarse o no quedó en el PATH del sistema — revisar el paso de instalación.
+
+# Parte 2 — Instalar RStudio
+
+## ¿Qué es RStudio y por qué lo usamos?
+
+RStudio es un **IDE** (entorno de desarrollo integrado): un programa que envuelve a R y agrega comodidades imprescindibles para trabajar:
+
+- Editor de scripts con resaltado de sintaxis
+- Consola, gráficos, archivos y ayuda, todo en una sola ventana
+- Gestión de **proyectos** (`.Rproj`) — clave para que el curso sea reproducible
+- Integración con **Git/GitHub** desde la interfaz, sin usar la terminal
+
+**Regla de oro:** primero R, después RStudio. RStudio busca una instalación de R en la computadora al abrirse.
+
+## Instalar RStudio Desktop (todos los sistemas operativos)
+
+1. Ir a **[posit.co/download/rstudio-desktop](https://posit.co/download/rstudio-desktop/)**
+2. Bajar hasta la sección **"All Installers"**
+3. Descargar el instalador correspondiente al sistema operativo (Windows / macOS / Ubuntu-Debian / Fedora-RedHat)
+4. Ejecutar el instalador con las opciones por defecto
+
+Es la versión **"RStudio Desktop - Free"** — no hace falta ninguna versión paga para este curso.
+
+## Primer uso: verificar que todo esté conectado
+
+Al abrir RStudio por primera vez, en la consola (panel inferior izquierdo, o el único panel si es la primera vez) escribir:
+
+```r
+R.version.string
+```
+
+y presionar Enter. Debería devolver la misma versión de R que vimos antes en la terminal. Si RStudio no encuentra ninguna instalación de R, lo va a advertir apenas se abre — en ese caso, revisar el Paso 1.
+
+# Parte 3 — R base vs. librerías
+
+## La analogía del celular
+
+- **R base** = el celular tal como sale de fábrica: hace llamadas, manda mensajes, tiene cámara.
+- **Una librería (paquete)** = una app que instalás después, porque necesitás algo puntual que el celular no trae de fábrica (un editor de fotos, un juego, un traductor).
+- Instalás la app **una vez**; después solo la **abrís** cada vez que la necesitás.
+
+Esa distinción — instalar una vez vs. usar cada vez — es exactamente la diferencia entre `install.packages()` y `library()`.
+
+## R base: lo que ya viene incluido
+
+Al instalar R, ya tenemos disponibles funciones como:
+
+```r
+mean(c(10, 20, 30))      # promedio
+sd(c(10, 20, 30))        # desvío estándar
+plot(1:10)                # un gráfico básico
+read.csv("archivo.csv")   # leer una tabla
+```
+
+Esto se llama **R base** (o "base R"): el núcleo del lenguaje, disponible siempre, sin instalar nada extra. Alcanza para estadística simple y gráficos básicos.
+
+## Librerías (paquetes): extender lo que R puede hacer
+
+Para tareas más específicas —transformar datos de forma prolija, hacer mapas, gráficos más elaborados— la comunidad de R publica **paquetes** (también llamados librerías) en CRAN.
+
+Ejemplos que vamos a usar en este curso:
+
+| Paquete | Para qué sirve |
+|---|---|
+| `dplyr` | Filtrar, transformar y resumir datos de forma legible |
+| `ggplot2` | Gráficos con una gramática flexible y potente |
+| `sf` | Datos espaciales vectoriales (mapas, puntos, polígonos) |
+| `terra` | Datos raster (grillas, imágenes satelitales, DEM) |
+
+## Los dos pasos que nunca hay que confundir
+
+```r
+# PASO 1 — instalar el paquete (UNA SOLA VEZ por computadora)
+install.packages("dplyr")
+
+# PASO 2 — cargar el paquete (CADA VEZ que abrimos una sesión nueva de R)
+library(dplyr)
+```
+
+- `install.packages()` descarga el paquete desde CRAN y lo guarda en el disco. Como instalar una app: se hace una vez.
+- `library()` "activa" el paquete en la sesión actual de R, para poder usar sus funciones. Como abrir la app: se hace cada vez que la necesitamos.
+
+**Error clásico de quien empieza:** correr `install.packages()` cada vez que se abre RStudio. No hace falta — ya está instalado. Solo hace falta `library()`.
+
+## Instalar todos los paquetes del curso, de una vez
+
+Antes de la Sesión 1, correr en la consola de RStudio:
+
+```r
+install.packages(c(
+  "tidyverse",   # incluye dplyr, ggplot2, tidyr y otros
+  "sf",
+  "terra",
+  "rmarkdown",
+  "knitr",
+  "kableExtra"
+))
+```
+
+Esto puede tardar varios minutos (descarga e instala varios paquetes). Se hace **una sola vez**, idealmente la noche antes del taller y no el mismo día.
+
+## Cómo saber si un paquete ya está instalado
+
+```r
+# Verifica si un paquete está instalado, sin instalarlo de nuevo
+"dplyr" %in% rownames(installed.packages())
+```
+
+O simplemente intentar cargarlo con `library()`: si no está instalado, R va a devolver un error del tipo `there is no package called 'dplyr'` — esa es la señal de que falta el `install.packages()`.
+
+## Resumen de esta charla
+
+1. **R** se instala una vez desde CRAN — es el motor.
+2. **RStudio** se instala después, como interfaz cómoda para trabajar con R.
+3. **R base** ya trae funciones esenciales, sin instalar nada extra.
+4. **Los paquetes/librerías** se instalan una vez (`install.packages()`) y se cargan en cada sesión (`library()`).
+5. Antes de la Sesión 1, instalar los seis paquetes del curso — ver README principal del repositorio.
+
+## ¿Dudas antes de arrancar con datos?
+
+Este es el momento de resolver cualquier problema de instalación — una vez que empecemos con `01_entorno_y_proyecto.R`, todo el curso asume que R, RStudio y los paquetes ya están funcionando.

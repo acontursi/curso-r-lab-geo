@@ -22,12 +22,33 @@ Repositorio del curso dictado para el Laboratorio de Geografía Física y Ambien
 ```
 curso-r-lab-geografia/
 ├── README.md                              <- este archivo (programa académico)
-├── data/                                  <- dataset ambiental de ejemplo (a definir)
+├── docs/                                  <- versión publicada online (GitHub Pages)
+│   └── index.html                         <- presentación de instalación, ya compilada
+├── 00-instalacion-r-rstudio/              <- presentación: instalar R/RStudio, R base vs. librerías
+├── data/                                  <- dataset ambiental de ejemplo
 ├── sesion-1-datos-estadistica-graficos/   <- scripts de la Sesión 1
 └── sesion-2-espacial-rmarkdown/           <- scripts y plantilla de la Sesión 2
 ```
 
 Cada carpeta de sesión tiene su propio `README.md` con el detalle de bloques y tiempos, y los scripts numerados en el orden en que se recorren durante el taller.
+
+## Presentación: instalación de R y RStudio
+
+Antes de la Sesión 1, se recomienda repasar la presentación introductoria sobre instalación de R, instalación de RStudio, y la diferencia entre R base y las librerías (paquetes). Está armada en R Markdown (ver [`00-instalacion-r-rstudio/`](00-instalacion-r-rstudio/)) y se puede ver:
+
+- **Online**, una vez publicado el repositorio con GitHub Pages activado (ver sección siguiente): `https://<usuario-o-organizacion>.github.io/curso-r-lab-geografia/`
+- **Localmente**, abriendo `docs/index.html` en cualquier navegador, sin necesidad de R
+
+## Publicar la presentación online (GitHub Pages)
+
+El repositorio ya incluye el HTML compilado en `docs/index.html`. Para que se vea en una URL pública, solo hace falta activar GitHub Pages una vez:
+
+1. En GitHub, ir a **Settings > Pages** del repositorio
+2. En "Build and deployment" → "Source", elegir **"Deploy from a branch"**
+3. En "Branch", elegir **`master`** (o `main`) y la carpeta **`/docs`**
+4. Guardar. GitHub tarda uno o dos minutos en publicarla la primera vez
+
+La URL queda como `https://<usuario-o-organizacion>.github.io/curso-r-lab-geografia/`. Cada vez que se actualice `docs/index.html` y se suba con `git push`, la página online se actualiza sola (puede tardar un minuto).
 
 ## 1. Fundamentación
 
@@ -115,6 +136,14 @@ install.packages(c(
 ))
 ```
 
+Si ya tenían R instalado de antes (no una instalación nueva), conviene además actualizar todos los paquetes existentes para evitar conflictos de versiones entre dependencias:
+
+```r
+update.packages(ask = FALSE)
+```
+
+Hacer esto la noche anterior al taller, no el mismo día (puede tardar varios minutos).
+
 Se recomienda además tener instalado [RStudio Desktop](https://posit.co/download/rstudio-desktop/) y, en el caso de RMarkdown a PDF, una distribución de LaTeX.
 
 **Recomendado: TinyTeX** (más liviano y menos propenso a errores de paquetes faltantes que una instalación manual de TeX Live):
@@ -134,3 +163,28 @@ cd curso-r-lab-geografia
 ```
 
 Abrir el proyecto en RStudio y recorrer los scripts en el orden numerado dentro de cada carpeta de sesión.
+
+## Solución de problemas
+
+### `No LaTeX installation detected` al compilar el PDF
+
+Error esperable si nunca se instaló LaTeX en la máquina. Se soluciona instalando TinyTeX desde R (no requiere permisos de administrador ni instalar nada por fuera de R):
+
+```r
+install.packages("tinytex")
+tinytex::install_tinytex()
+```
+
+Cerrar y reabrir RStudio después de que termine, y volver a compilar. Si por algún motivo la instalación de TinyTeX falla o no se quiere instalar LaTeX ese día, se puede compilar a HTML en su lugar: en RStudio, desplegar la flecha junto al botón **Knit** y elegir **Knit to HTML**.
+
+### `namespace 'systemfonts' ... is being loaded, but >= X.X.X is required` al cargar `kableExtra`
+
+Conflicto de versiones entre paquetes instalados en momentos distintos. Se soluciona actualizando y reiniciando R (no alcanza con solo instalar, hay que reiniciar la sesión):
+
+```r
+install.packages(c("systemfonts", "textshaping", "ragg", "kableExtra"))
+```
+
+Luego `Session > Restart R` en RStudio (o `Ctrl+Shift+F10`) antes de volver a compilar.
+
+**Recomendación para el día del taller:** para evitar este tipo de conflictos de versión en vivo, pedir a los participantes que corran `update.packages(ask = FALSE)` la noche anterior, no el mismo día del curso.
