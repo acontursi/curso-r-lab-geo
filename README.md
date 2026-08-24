@@ -115,7 +115,16 @@ install.packages(c(
 ))
 ```
 
-Se recomienda además tener instalado [RStudio Desktop](https://posit.co/download/rstudio-desktop/) y, en el caso de RMarkdown a PDF, una distribución de LaTeX (`tinytex::install_tinytex()`).
+Se recomienda además tener instalado [RStudio Desktop](https://posit.co/download/rstudio-desktop/) y, en el caso de RMarkdown a PDF, una distribución de LaTeX.
+
+**Recomendado: TinyTeX** (más liviano y menos propenso a errores de paquetes faltantes que una instalación manual de TeX Live):
+
+```r
+install.packages("tinytex")
+tinytex::install_tinytex()
+```
+
+Si en cambio se usa una distribución de TeX Live del sistema operativo (por ejemplo vía `apt` en Linux), verificar que estén instalados los paquetes `lmodern` y `ulem` (parte de `texlive-latex-recommended` / `texlive-plain-generic`): sin ellos, `03_paper_template.Rmd` falla al compilar a PDF con errores de tipo `File 'lmodern.sty' not found`.
 
 ## Cómo usar este repositorio
 

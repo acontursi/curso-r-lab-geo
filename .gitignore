@@ -35,5 +35,10 @@ Thumbs.db
 sesion-1-datos-estadistica-graficos/*.png
 sesion-1-datos-estadistica-graficos/*.csv
 sesion-2-espacial-rmarkdown/*.png
+sesion-2-espacial-rmarkdown/*.gpkg
+sesion-2-espacial-rmarkdown/*.tex
+sesion-2-espacial-rmarkdown/*_files/
 sesion-2-espacial-rmarkdown/paper_final.pdf
 sesion-2-espacial-rmarkdown/paper_final.html
+sesion-2-espacial-rmarkdown/03_paper_template.pdf
+sesion-2-espacial-rmarkdown/03_paper_template.html

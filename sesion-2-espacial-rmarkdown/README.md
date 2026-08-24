@@ -12,8 +12,8 @@
 
 ## Cómo recorrer los scripts
 
-- [ ] `01_datos_espaciales_sf.R`
-- [ ] `02_raster_referencia.R` *(script de referencia — se ejecuta guiado, no se escribe en vivo)*
-- [ ] `03_paper_template.Rmd` *(plantilla final — se completa con lo producido en las sesiones 1 y 2)*
+- [x] `01_datos_espaciales_sf.R`
+- [x] `02_raster_referencia.R` *(script de referencia — se ejecuta guiado, no se escribe en vivo)*
+- [x] `03_paper_template.Rmd` *(plantilla final — se completa con lo producido en las sesiones 1 y 2)*
 
-*(Scripts en construcción — se agregan paso a paso en este repositorio.)*
+Los tres archivos están probados: los dos scripts corren de punta a punta, y la plantilla RMarkdown compila tanto a HTML como a PDF (requiere una distribución de LaTeX con los paquetes `lmodern`, `ulem` y afines — ver nota de instalación en el README principal).

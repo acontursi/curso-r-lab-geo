@@ -1,0 +1,137 @@
+---
+title: "Título del trabajo: caso y período de estudio"
+subtitle: "Subtítulo opcional"
+author: "Nombre Apellido — Laboratorio de Geografía Física y Ambiental"
+date: "`r local({meses <- c('enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'); paste0(format(Sys.Date(), '%d'), ' de ', meses[as.numeric(format(Sys.Date(), '%m'))], ' de ', format(Sys.Date(), '%Y'))})`"
+output:
+  pdf_document:
+    toc: false
+    number_sections: true
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,       # no mostrar el código en el documento final (es un paper, no un tutorial)
+  warning = FALSE,
+  message = FALSE,
+  fig.align = "center"
+)
+
+library(dplyr)
+library(ggplot2)
+library(sf)
+library(knitr)
+library(kableExtra)
+```
+
+<!--
+CÓMO USAR ESTA PLANTILLA
+Reemplazar cada sección [ENTRE CORCHETES] con el contenido propio. Los chunks
+de código ya están armados para leer los datos y reproducir el gráfico y el
+mapa hechos en los bloques anteriores — solo hay que ajustar rutas o
+variables si se usó un dataset propio en vez del de ejemplo.
+-->
+
+# Introducción
+
+[Presentar el problema de investigación: qué se estudia, por qué es relevante
+para la geografía física/ambiental, y qué preguntas guían el trabajo.
+2-3 párrafos.]
+
+# Datos y métodos
+
+Los datos utilizados corresponden a `r nrow(read.csv("../data/datos_climaticos_santafe.csv"))`
+registros mensuales de temperatura y precipitación para 6 localidades de la
+provincia de Santa Fe, en el período 2020-2024.
+
+[Ajustar esta sección con la fuente real de los datos propios, el período
+efectivamente cubierto, y los métodos estadísticos y espaciales aplicados.]
+
+```{r cargar-datos}
+datos <- read.csv("../data/datos_climaticos_santafe.csv")
+datos$fecha <- as.Date(datos$fecha)
+
+estaciones <- read.csv("../data/estaciones.csv")
+
+resumen_por_sitio <- datos |>
+  group_by(sitio) |>
+  summarize(
+    `Temp. media (°C)` = round(mean(temperatura_media_c), 1),
+    `Precip. media (mm)` = round(mean(precipitacion_mm), 1),
+    `Precip. total (mm)` = round(sum(precipitacion_mm), 0),
+    .groups = "drop"
+  ) |>
+  rename(Localidad = sitio)
+```
+
+# Resultados
+
+## Estadística descriptiva
+
+La Tabla 1 resume los estadísticos principales por localidad.
+
+```{r tabla-resumen}
+kable(resumen_por_sitio, caption = "Resumen climático por localidad (2020-2024)") |>
+  kable_styling(latex_options = c("striped", "hold_position"), full_width = FALSE)
+```
+
+[Interpretar la tabla: ¿qué localidad muestra los valores más altos/bajos?
+¿hay algún patrón esperable dado el conocimiento del área de estudio?]
+
+## Evolución temporal
+
+```{r grafico-serie, fig.cap="Temperatura media mensual por localidad (2020-2024)", fig.width=7, fig.height=4.5}
+ggplot(datos, aes(x = fecha, y = temperatura_media_c, color = sitio)) +
+  geom_line(linewidth = 0.6) +
+  labs(x = NULL, y = "Temperatura media (°C)", color = "Localidad") +
+  theme_minimal()
+```
+
+[Comentar el gráfico: estacionalidad, diferencias entre localidades,
+tendencias si las hubiera.]
+
+## Distribución espacial
+
+```{r mapa, fig.cap="Temperatura media (2020-2024) por localidad", fig.width=6, fig.height=6.5}
+estaciones_sf <- st_as_sf(estaciones, coords = c("lon", "lat"), crs = 4326) |>
+  left_join(
+    datos |> group_by(sitio) |> summarize(temp_promedio = mean(temperatura_media_c), .groups = "drop"),
+    by = "sitio"
+  )
+
+bbox <- st_bbox(estaciones_sf)
+
+ggplot(estaciones_sf) +
+  geom_sf(aes(color = temp_promedio, size = temp_promedio)) +
+  geom_sf_text(aes(label = sitio), nudge_y = 0.18, size = 3) +
+  coord_sf(
+    xlim = c(bbox["xmin"] - 0.5, bbox["xmax"] + 0.5),
+    ylim = c(bbox["ymin"] - 0.5, bbox["ymax"] + 0.5)
+  ) +
+  scale_color_viridis_c(option = "plasma") +
+  labs(color = "Temp. (°C)", size = "Temp. (°C)") +
+  theme_minimal()
+```
+
+[Interpretar el patrón espacial: ¿se observa el gradiente esperado? ¿qué
+factores geográficos podrían explicarlo?]
+
+# Discusión
+
+[Relacionar los resultados con la literatura o el marco conceptual del
+trabajo. ¿Qué implica el patrón encontrado? ¿Qué limitaciones tiene el
+análisis (tamaño de muestra, período, resolución espacial)?]
+
+# Conclusiones
+
+[Síntesis breve de los hallazgos principales y posibles líneas futuras.]
+
+# Referencias
+
+<!-- Si usan citr o Zotero con BibTeX, acá se inserta automáticamente la
+bibliografía a partir de un archivo .bib. Por ahora, referencias manuales: -->
+
+- [Agregar referencias bibliográficas del trabajo]
