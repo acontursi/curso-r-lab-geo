@@ -1,5 +1,17 @@
 # =============================================================================
-# Sesión 1 · Bloque 5 (75 min)
+# CURSO DE R — LABORATORIO DE GEOGRAFÍA FÍSICA Y AMBIENTAL (FHUC-UNL)
+# Introducción a R para el Análisis Estadístico, Gráfico y Espacial
+# -----------------------------------------------------------------------------
+# Adrián Contursi Reynoso | acontursi@fhuc.unl.edu.ar
+# Facultad de Humanidades y Ciencias - Universidad Nacional del Litoral
+# Repositorio: https://github.com/acontursi/curso-r-lab-geo
+# Actualizado: 2026-08-24
+# Licencia:    CC BY-NC-SA 4.0 — se permite compartir y adaptar citando la
+#              fuente, sin fines comerciales
+# =============================================================================
+
+# =============================================================================
+# Sesión 1: Bloque 4 (75 min)
 # Gramática de gráficos con ggplot2
 # =============================================================================
 #

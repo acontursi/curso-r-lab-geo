@@ -1,5 +1,17 @@
 # =============================================================================
-# Sesión 1 · Bloque 1 (45 min)
+# CURSO DE R — LABORATORIO DE GEOGRAFÍA FÍSICA Y AMBIENTAL (FHUC-UNL)
+# Introducción a R para el Análisis Estadístico, Gráfico y Espacial
+# -----------------------------------------------------------------------------
+# Adrián Contursi Reynoso | acontursi@fhuc.unl.edu.ar
+# Facultad de Humanidades y Ciencias - Universidad Nacional del Litoral
+# Repositorio: https://github.com/acontursi/curso-r-lab-geo
+# Actualizado: 2026-08-24
+# Licencia:    CC BY-NC-SA 4.0 — se permite compartir y adaptar citando la
+#              fuente, sin fines comerciales
+# =============================================================================
+
+# =============================================================================
+# Sesión 1: Bloque 1 (45 min)
 # Entorno de trabajo: RStudio, proyectos (.Rproj) e importación de datos
 # =============================================================================
 #
@@ -9,7 +21,7 @@
 #
 # ANTES DE EMPEZAR (ya debería estar hecho, ver guía de instalación en el
 # README principal del repositorio):
-#   install.packages(c("tidyverse", "sf", "terra", "rmarkdown", "kableExtra"))
+# install.packages(c("tidyverse", "sf", "terra", "rmarkdown", "kableExtra"))
 
 # -----------------------------------------------------------------------------
 # 1. ¿Por qué trabajar con un proyecto de RStudio (.Rproj)?
@@ -22,7 +34,7 @@
 # la carpeta de trabajo ya es la raíz del repositorio. Verificalo con:
 getwd()
 
-# Deberías ver algo terminado en ".../curso-r-lab-geografia"
+# Deberías ver algo terminado en ".../curso-r-lab-geo"
 # Si no es así: Session > Set Working Directory > To Project Directory
 
 # -----------------------------------------------------------------------------
