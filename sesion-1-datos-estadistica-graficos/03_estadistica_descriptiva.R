@@ -39,6 +39,7 @@ cat("Mediana:", round(mediana_temp, 2), "°C\n")
 cat("Desvío estándar:", round(sd_temp, 2), "°C\n")
 cat("Rango:", rango_temp[1], "a", rango_temp[2], "°C\n")
 
+
 # summary() da varios de estos estadísticos de una sola vez
 summary(datos$temperatura_media_c)
 

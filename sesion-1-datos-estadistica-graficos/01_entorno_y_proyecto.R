@@ -42,6 +42,7 @@ getwd()
 # -----------------------------------------------------------------------------
 # En este bloque solo necesitamos lectura de datos. dplyr se usa apenas para
 # dar un primer vistazo con glimpse().
+#install.packages("dplyr")
 library(dplyr)
 
 # -----------------------------------------------------------------------------

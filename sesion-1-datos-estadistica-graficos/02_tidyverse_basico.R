@@ -40,7 +40,7 @@ datos |> head()
 # 2. filter(): quedarse con ciertas filas
 # -----------------------------------------------------------------------------
 # ¿Qué registros corresponden solo a Santa Fe capital?
-datos |> filter(sitio == "Santa Fe")
+datosSF <- datos |> filter(sitio == "Santa Fe")
 
 # ¿Y los meses de verano (diciembre, enero, febrero) en cualquier sitio?
 datos |> filter(mes %in% c(12, 1, 2))
