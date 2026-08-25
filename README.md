@@ -85,8 +85,7 @@ Brindar a los integrantes del laboratorio las herramientas básicas de R necesar
 | 1 | 45 min | Entorno de trabajo: RStudio, proyectos (`.Rproj`), importación de datos propios (CSV/Excel) | `01_entorno_y_proyecto.R` |
 | 2 | 45 min | Tidyverse esencial: `dplyr` (filter, mutate, group_by, summarize) y el operador pipe (`\|>`) | `02_tidyverse_basico.R` |
 | 3 | 60 min | Estadística descriptiva aplicada: tendencia central, dispersión, outliers, correlación y una prueba de comparación (t-test o ANOVA) | `03_estadistica_descriptiva.R` |
-| 4 | 15 min | Descanso | — |
-| 5 | 75 min | Gramática de gráficos con `ggplot2`: serie temporal o boxplot comparativo con datos propios | `04_graficos_ggplot2.R` |
+| 4 | 75 min | Gramática de gráficos con `ggplot2`: serie temporal o boxplot comparativo con datos propios | `04_graficos_ggplot2.R` |
 
 Ver detalle en [`sesion-1-datos-estadistica-graficos/README.md`](sesion-1-datos-estadistica-graficos/README.md).
 
@@ -95,10 +94,9 @@ Ver detalle en [`sesion-1-datos-estadistica-graficos/README.md`](sesion-1-datos-
 | Bloque | Duración | Contenido | Script |
 |---|---|---|---|
 | 1 | 90 min | Datos espaciales vectoriales con `sf`: CRS, mapa temático con `ggplot2` + `sf` | `01_datos_espaciales_sf.R` |
-| 2 | 15 min | Descanso | — |
-| 3 | 30 min | Introducción guiada a datos raster con `terra` (DEM, NDVI, variables climáticas), a partir de un script ya elaborado | `02_raster_referencia.R` |
-| 4 | 90 min | RMarkdown: YAML, chunks, inserción de gráfico y mapa propios, tablas con `kable`, esqueleto de paper | `03_paper_template.Rmd` |
-| 5 | 15 min | Compilación del documento a PDF/HTML y cierre | — |
+| 2 | 30 min | Introducción guiada a datos raster con `terra` (DEM, NDVI, variables climáticas), a partir de un script ya elaborado | `02_raster_referencia.R` |
+| 3 | 90 min | RMarkdown: YAML, chunks, inserción de gráfico y mapa propios, tablas con `kable`, esqueleto de paper | `03_paper_template.Rmd` |
+| 4 | 15 min | Compilación del documento a PDF/HTML y cierre | — |
 
 Ver detalle en [`sesion-2-espacial-rmarkdown/README.md`](sesion-2-espacial-rmarkdown/README.md).
 
