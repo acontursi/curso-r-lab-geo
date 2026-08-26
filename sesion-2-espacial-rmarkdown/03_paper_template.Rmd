@@ -1,7 +1,7 @@
 ---
 title: "Título del trabajo: caso y período de estudio"
-subtitle: "Subtítulo opcional"
-author: "Nombre Apellido — Laboratorio de Geografía Física y Ambiental"
+subtitle: "R para Geografía"
+author: "Adrián Contursi Reynoso — Laboratorio de Geografía Física y Ambiental"
 date: "`r local({meses <- c('enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'); paste0(format(Sys.Date(), '%d'), ' de ', meses[as.numeric(format(Sys.Date(), '%m'))], ' de ', format(Sys.Date(), '%Y'))})`"
 output:
   pdf_document:

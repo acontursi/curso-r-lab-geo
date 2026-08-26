@@ -1,4 +1,16 @@
 # =============================================================================
+# CURSO DE R — LABORATORIO DE GEOGRAFÍA FÍSICA Y AMBIENTAL (FHUC-UNL)
+# Introducción a R para el Análisis Estadístico, Gráfico y Espacial
+# -----------------------------------------------------------------------------
+# Adrián Contursi Reynoso | acontursi@fhuc.unl.edu.ar
+# Facultad de Humanidades y Ciencias - Universidad Nacional del Litoral
+# Repositorio: https://github.com/acontursi/curso-r-lab-geo
+# Actualizado: 2026-08-24
+# Licencia:    CC BY-NC-SA 4.0 — se permite compartir y adaptar citando la
+#              fuente, sin fines comerciales
+# =============================================================================
+
+# =============================================================================
 # Sesión 2 · Bloque 1 (90 min)
 # Datos espaciales vectoriales con sf: CRS y mapa temático con ggplot2 + sf
 # =============================================================================
@@ -9,8 +21,8 @@
 # simple y producir un mapa temático.
 
 library(dplyr)
-library(sf)
 library(ggplot2)
+library(sf)
 
 # -----------------------------------------------------------------------------
 # 1. De tabla a objeto espacial: st_as_sf()
@@ -28,6 +40,7 @@ estaciones_sf <- st_as_sf(
 )
 
 estaciones_sf
+plot(estaciones_sf)
 
 # La diferencia clave: ahora hay una columna "geometry" y el objeto "sabe"
 # en qué sistema de coordenadas está.
